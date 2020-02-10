@@ -31,7 +31,11 @@ from sklearn.datasets import load_svmlight_file
 import torch
 from torch.utils.data import DataLoader, Dataset
 # pylint: disable=E0611
-from torch.utils.data.dataloader import _DataLoaderIter, _utils
+from torch.utils.data.dataloader import _utils
+try:
+    from torch.utils.data.dataloader import _DataLoaderIter
+except ImportError:
+    from torch.utils.data.dataloader import _BaseDataLoaderIter as _DataLoaderIter
 
 from . import constants
 from . import syssettings
